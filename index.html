@@ -7,6 +7,7 @@
     <title>Inheritance</title>
 </head>
 <body>
+    <h1><u>INHERITANCE AND PROTOTYPES</u></h1>
     <h2>Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h2>
     <pre>
         const Parent={
@@ -22,6 +23,27 @@
     </pre>
     Output:<br>My name is Isha and I am from Ranchi and age is 23.
     <hr>
+    <h2>Write code to explain prototype chaining</h2>
+    <pre>
+        const Wish=function(){}
+        Wish.prototype={
+            print(){
+                return 'Hello!';
+            }
+        };
+        const Greet=function(){}
+        Greet.prototype=Object.create(Wish.prototype);
+        Greet.prototype.print=function(){
+            return 'My name is Isha';
+        };
+        const wish1=new Wish();
+        const wish2=new Greet();
+        console.log(wish1.print());
+        console.log(wish2.print()); 
+    </pre>
+    Output:<br>Hello!<br>
+    My name is Isha
+    <hr>
    <h2>Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h2>
    <pre>let arr=new Array(1,2,3,4,5)
     arr.__proto__.sum=function(givenArray){
@@ -36,6 +58,27 @@
    </pre> 
    Output:<br>15
    <hr>
-   <h2></h2>
+   <h2>Write a JavaScript function to retrieve all the names of object's own and inherited properties.</h2>
+   <pre>
+    function allKeys(obj) {
+        if (!isObject(obj)) return [];
+        var keys = [];
+        for (var key in obj) keys.push(key);
+        return keys;
+    }
+    function isObject(obj) 
+    {
+        var type = typeof obj;
+        return type === 'function' || type === 'object' && !!obj;
+      }
+    function Student(name) {
+      this.name = name;
+    }
+    Student.prototype.rollno = true;
+    console.log(allKeys(new Student("Isha")));
+
+   </pre>
+   Output:<br>[ 'name', 'rollno' ]
+   <hr>
 </body>
 </html>
