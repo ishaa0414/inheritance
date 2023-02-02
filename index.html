@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+<body>
+    <h2>Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</h2>
+    <pre>
+        const Parent={
+            detail(){
+                console.log('My name is '+`${this.name}`+ ' and I am from '+`${this.location}`+' and age is '+ `${this.age}`);
+            }
+           } 
+           const firstChild=Object.create(Parent);
+           firstChild.name="Isha";
+           firstChild.location="Ranchi";
+           firstChild.age="23"
+           firstChild.detail();
+    </pre>
+    Output:<br>My name is Isha and I am from Ranchi and age is 23.
+    <hr>
+   <h2>Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</h2>
+   <pre>let arr=new Array(1,2,3,4,5)
+    arr.__proto__.sum=function(givenArray){
+        let count=0;
+        for(let i=0;i < arr.length;i++){
+            count+=arr[i];
+        }
+        return count;
+    }
+    let result=arr.sum(arr);
+    console.log(result);
+   </pre> 
+   Output:<br>15
+   <hr>
+   <h2></h2>
+</body>
+</html>
